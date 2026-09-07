@@ -37,10 +37,20 @@
                 </nav>
 
                 <div class="sidebar-footer">
-                    <p class="eyebrow">System</p>
-                    <div class="status-card">
-                        <span class="status-dot"></span>
-                        Live sync enabled
+                    <p class="eyebrow">Signed in as</p>
+                    <div class="status-card" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+                        <div style="display:flex; align-items:center; gap:10px; width:100%;">
+                            <span class="status-dot"></span>
+                            <span style="font-size:.88rem; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                {{ Auth::user()->name }}
+                            </span>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}" style="width:100%;">
+                            @csrf
+                            <button id="logout-btn" type="submit" class="btn btn-secondary" style="width:100%; font-size:.82rem; min-height:36px; padding: 8px 12px;">
+                                Sign out ↩
+                            </button>
+                        </form>
                     </div>
                 </div>
             </aside>
